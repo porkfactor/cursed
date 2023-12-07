@@ -1,10 +1,14 @@
-#include <cursed/basic_window.hpp>
+#include <unistd.h>
 
-#include <curses/curses.h>
+#include <cursed/display.hpp>
 
 int main(int argc, char const *argv[])
 {
-	cursed::basic_window w;
+	auto d = cursed::Display::getCurrent();
+
+	while(1) sleep(1);
+
+	d->close();
 
 	return 0;
 }

@@ -12,4 +12,6 @@ namespace cursed
     };
 }
 
+#include <cursed/impl/device.cpp>
+
 #endif

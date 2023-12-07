@@ -6,9 +6,12 @@
 #include <cursed/device.hpp>
 #include <cursed/rectangle.hpp>
 
+#include <cursed/detail/curses/display.hpp>
+
 namespace cursed
 {
-    class Display : public Device
+    template<typename _Impl>
+    class basic_display : public basic_device
     {
     public:
         Display();
@@ -23,7 +26,10 @@ namespace cursed
         Rectangle getBounds();
 
     private:
+        _Impl impl_;
     };
 }
+
+#include <cursed/impl/display.cpp>
 
 #endif
