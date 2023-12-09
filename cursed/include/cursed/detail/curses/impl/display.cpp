@@ -9,9 +9,6 @@ namespace cursed
             display::display()
             {
                 screen_ = ::newterm("xterm", stdout, stdin);
-                window_ = ::stdscr;
-                ::box(stdscr, 0, 0);
-                ::wrefresh(stdscr);
             }
 
             display::~display()

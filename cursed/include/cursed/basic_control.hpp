@@ -1,21 +1,24 @@
 #ifndef CURSED_CONTROL_HPP_
 #define CURSED_CONTROL_HPP_
 
-#include <cursed/widget.hpp>
+#include <cursed/basic_widget.hpp>
 #include <cursed/color.hpp>
 #include <cursed/rectangle.hpp>
 #include <cursed/point.hpp>
 
 namespace cursed
 {
-    class Composite;
+    template<typename _Impl>
+    class basic_composite;
 
-    class Control : public Widget
+    template<typename _Impl>
+    class basic_control : public basic_widget<_Impl>
     {
     public:
-        Control(std::shared_ptr<Composite>);
-        Control(Control const &) = delete;
-        Control(Control &&);
+        basic_control();
+        basic_control(std::shared_ptr<basic_composite<_Impl>>);
+        basic_control(basic_control const &) = delete;
+        basic_control(basic_control &&) = delete;
 
         Color getBackground() const noexcept;
         void setBackground(Color);
@@ -38,5 +41,7 @@ namespace cursed
         Rectangle bounds_;
     };
 }
+
+#include <cursed/impl/basic_control.cpp>
 
 #endif

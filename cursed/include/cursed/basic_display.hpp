@@ -3,10 +3,9 @@
 
 #include <memory>
 
-#include <cursed/device.hpp>
 #include <cursed/rectangle.hpp>
 
-#include <cursed/detail/curses/display.hpp>
+#include <cursed/basic_device.hpp>
 
 namespace cursed
 {
@@ -14,10 +13,10 @@ namespace cursed
     class basic_display : public basic_device
     {
     public:
-        Display();
+        basic_display();
 
-        static std::shared_ptr<Display> getCurrent();
-        static std::shared_ptr<Display> getDefault();
+        static std::shared_ptr<basic_display<_Impl>> getCurrent();
+        static std::shared_ptr<basic_display<_Impl>> getDefault();
 
         void beep(void);
         void close(void);
@@ -25,11 +24,14 @@ namespace cursed
 
         Rectangle getBounds();
 
+        inline _Impl &impl() { return impl_; }
+        inline _Impl const &impl() const { return impl_; }
+
     private:
         _Impl impl_;
     };
 }
 
-#include <cursed/impl/display.cpp>
+#include <cursed/impl/basic_display.cpp>
 
 #endif

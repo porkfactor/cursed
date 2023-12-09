@@ -3,15 +3,15 @@
 
 namespace cursed
 {
-    class Device
+    class basic_device
     {
     public:
-        Device();
+        basic_device();
 
     private:
     };
 }
 
-#include <cursed/impl/device.cpp>
+#include <cursed/impl/basic_device.cpp>
 
 #endif
